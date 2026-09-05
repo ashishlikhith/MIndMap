@@ -1,0 +1,2 @@
+import { requireIdentity, json } from '../_lib/auth.js'; import { ensureSchema, sql } from '../_lib/db.js';
+export default async function handler(request: Request) { try { const user=await requireIdentity(request); await ensureSchema(); const rows=await sql`SELECT id, user_id, scores, responses, completed_at FROM assessments WHERE user_id=${user.id} ORDER BY completed_at DESC`; return json({user, assessments:rows}); } catch(error) { return error instanceof Response ? error : json({error:'Unable to load results.'},500); } }
