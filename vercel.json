@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "installCommand": "cd mindmap-assessment && npm ci",
+  "buildCommand": "cd mindmap-assessment && npm run build",
+  "outputDirectory": "mindmap-assessment/dist",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
